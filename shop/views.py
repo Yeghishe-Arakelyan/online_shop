@@ -36,10 +36,9 @@ def product_detail(request, slug):
 		'favorites':'favorites',
 		'related_products':related_products
 	}
-	if request.user.likes.filter(id=product.id).first():
+	if hasattr(request.user, 'likes') and request.user.likes.filter(id=product.id).exists():
 		context['favorites'] = 'remove'
 	return render(request, 'product_detail.html', context)
-
 
 @login_required
 def add_to_favorites(request, product_id):
