@@ -85,3 +85,12 @@ def filter_by_category(request, slug):
 				for product in Product.objects.filter(category=category).all()]
 	context = {'products': paginat(request ,result)}
 	return render(request, 'home_page.html', context)
+
+
+def faqs_view(request):
+    # Your logic for fetching and passing FAQs data to the template goes here
+    return render(request, 'faqs.html')
+
+def about_view(request):
+    # Your logic for passing data about your shop to the template goes here
+    return render(request, 'about.html')
